@@ -47,7 +47,7 @@ router.put('/addCaBook/', Utils.authenticateToken, (req, res) => {  // endpoint 
     _id: req.user._id
   }, {
     $push: {
-      cartBooks: req.body.bookId
+      Books: req.body.bookId
     }
   })
     .then((user) => {            
@@ -63,7 +63,7 @@ router.put('/addCaBook/', Utils.authenticateToken, (req, res) => {  // endpoint 
     })
 })
 
-// GET - get single user -------------------------------------------------------
+// GET - get single user (populating both wishlist and cart fnc) -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
   if(req.user._id != req.params.id){
     return res.status(401).json({
@@ -71,7 +71,8 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
     })
   }
 
-  User.findById(req.params.id).populate('favouriteBooks')
+  User.findById(req.params.id)
+  .populate('favouriteBooks cartBooks')
     .then(user => {
       res.json(user)
     })
@@ -83,6 +84,7 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
       })
     })
 })
+
 
 
 // PUT - update user ---------------------------------------------
