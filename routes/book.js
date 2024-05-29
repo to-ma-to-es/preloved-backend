@@ -42,12 +42,14 @@ router.post('/', (req, res) => {
     // create new book
     let newBook = new Book({
       name: req.body.name,
+      author: req.body.author,
       description: req.body.description,
       price: req.body.price,
       user: req.body.user,
       image: uniqueFilename,
-      gender: req.body.gender,
-      length: req.body.length
+      condition: req.body.condition,
+      coverType: req.body.coverType,
+      year: req.body.year
     })
   
     newBook.save()

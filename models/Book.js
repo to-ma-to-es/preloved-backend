@@ -8,6 +8,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  author: {
+    type: String,
+    required: true
+  },
   description: {
     type: String    
   },
@@ -24,15 +28,18 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true    
   },
-  gender: {
+  condition: {
     type: String,
     required: true
   },
-  length: {
+  coverType: {
     type: String,
     required: true
+  },
+  year: {
+    type: Number,
+    required: true
   }
-  
 }, { timestamps: true })
 
 

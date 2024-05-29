@@ -47,18 +47,18 @@ router.put('/addCaBook/', Utils.authenticateToken, (req, res) => {  // endpoint 
     _id: req.user._id
   }, {
     $push: {
-      Books: req.body.bookId
+      cartBooks: req.body.bookId
     }
   })
     .then((user) => {            
       res.json({
-        message: "Book added to favourites"
+        message: "Book added to cart"
       })
     })
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        message: "Problem adding favourite book"
+        message: "Problem adding book to cart"
       })
     })
 })
