@@ -49,7 +49,8 @@ router.post('/', (req, res) => {
       image: uniqueFilename,
       condition: req.body.condition,
       coverType: req.body.coverType,
-      year: req.body.year
+      year: req.body.year,
+      genre: req.body.genre
     })
   
     newBook.save()

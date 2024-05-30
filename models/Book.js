@@ -39,6 +39,10 @@ const bookSchema = new mongoose.Schema({
   year: {
     type: Number,
     required: true
+  },
+  genre: {
+    type: String,
+    required: true
   }
 }, { timestamps: true })
 
